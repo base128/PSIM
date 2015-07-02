@@ -55,7 +55,7 @@
         android:layout_below="@+id/ll_1"
         android:singleLine="true"
         android:layout_weight="1"
-        android:text="87.78.178.236"
+        android:text="87.79.233.168"
         android:hint="Address"/>
 
     <LinearLayout
