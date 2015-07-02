@@ -158,6 +158,7 @@ public class MainActivity extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             pb.setVisibility(View.VISIBLE);
+            e = null;
         }
 
         @Override
@@ -183,16 +184,18 @@ public class MainActivity extends ActionBarActivity {
         protected void onPostExecute(Void v) {
             pb.setVisibility(View.GONE);
 
-            if(!(e.equals(null))) {
+            if(!(e == null)) {
+                // e is NOT null, so there was an error. Handle it.
                 if(e.getMessage().startsWith("failed to connect to")) {
                     tv.setText("Server currently offline.");
                 } else {
                     tv.setText(e.getMessage());
                 }
             } else {
+                // if e is null, then there was no error
+                // Clear the EditText so a new message can be input
                 addTextView(et2.getText().toString());
-                // Line below is changed for debugging, is supposed to be: et2.setText("");
-                et2.setText(e.getMessage());
+                et2.setText("");
             }
         }
     }
